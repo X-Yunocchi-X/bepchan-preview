@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import { buttonDisabled, buttonSecondary } from "@/components/ui";
+import { buttonSecondary } from "@/components/ui";
 import { copy, type Lang } from "./content";
 import { LatencyDiagram, RecoveryDiagram } from "./Diagrams";
 
@@ -150,7 +150,7 @@ export function WhyChooseBeptardPage() {
                 href="#top"
                 className="text-[20px] font-semibold leading-7 tracking-[0.2px] text-ink hover:no-underline"
               >
-                Beptard
+                {t.nav.title}
               </a>
               <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-muted">
                 {t.nav.tagline}
@@ -339,17 +339,8 @@ export function WhyChooseBeptardPage() {
 
           <section className="py-10 sm:py-12">
             <div className="max-w-[620px] border border-line bg-panel p-5 sm:p-6">
-              <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-accent">
-                {t.cta.label}
-              </p>
-              <h2 className="mt-2 text-[22px] font-semibold">{t.cta.title}</h2>
-              <p className="mt-5 text-[34px] font-semibold leading-none">{t.cta.price}</p>
-              <p className="mt-2 text-sm text-muted">{t.cta.priceNote}</p>
-              <button type="button" disabled className={`${buttonDisabled} mt-5 w-full`}>
-                {t.cta.disabledButton}
-              </button>
-              <p className="mt-2 text-xs text-muted">{t.cta.disabledNote}</p>
-              <div className="mt-5 border-t border-line-soft pt-5">
+              <h2 className="text-[22px] font-semibold">{t.cta.title}</h2>
+              <div className="mt-5">
                 <button
                   type="button"
                   onClick={() => setDiscordNoteShown(true)}

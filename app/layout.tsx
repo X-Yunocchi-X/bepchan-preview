@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Why Choose Beptard? — Product Overview',
+  title: 'Why Game Connection Optimization? — Technical Overview',
   description: 'Game-specific acceleration, connection recovery, protocol-aware optimization and more.',
   robots: { index: false, follow: false },
 };

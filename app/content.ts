@@ -1,5 +1,5 @@
 /**
- * 「Why Choose Beptard?」预览页的中英文文案。
+ * 「Why Game Connection Optimization?」预览页的中英文文案。
  *
  * 页面是独立预览页：语言只在本页切换，不接入全站 i18n，也不持久化选择。
  * 英文是默认语言；两种语言必须保持同一结构，避免切到中文时缺字段。
@@ -7,7 +7,8 @@
 
 const en = {
   nav: {
-    tagline: "Product overview",
+    title: "Game Connection Preview",
+    tagline: "Technical overview",
     aria: "Page sections",
     languageAria: "Page language",
     sections: [
@@ -18,9 +19,9 @@ const en = {
     ],
   },
   hero: {
-    eyebrow: "Product overview",
-    title: "Why Choose Beptard?",
-    lead: "A closer look at how Beptard keeps setup simple, holds supported sessions together through short network drops, and reduces unnecessary waiting — without turning networking into homework.",
+    eyebrow: "Technical overview",
+    title: "Why Game Connection Optimization?",
+    lead: "A closer look at how connection optimization keeps setup simple, holds supported sessions together through short network drops, and reduces unnecessary waiting — without turning networking into homework.",
   },
   diagramHint: "Swipe sideways to see the full diagram.",
   sections: {
@@ -28,20 +29,20 @@ const en = {
       label: "Easy to Use",
       title: "Built for Players, Not Network Engineers",
       intro:
-        "Beptard handles the network details for you. There are no proxies, domain lists, routing rules, or nodes to configure.",
-      steps: ["Install Beptard", "Choose a game", "Start acceleration"],
+        "The client handles the network details for you. There are no proxies, domain lists, routing rules, or nodes to configure.",
+      steps: ["Install the client", "Choose a game", "Start acceleration"],
       summary:
-        "Every game has its own switch, so only the titles you turn on are accelerated. Beptard applies game-specific rules to matching connections automatically, and some games can cache local resources so existing assets do not need to be downloaded again.",
+        "Every game has its own switch, so only the titles you turn on are accelerated. The client applies game-specific rules to matching connections automatically, and some games can cache local resources so existing assets do not need to be downloaded again.",
     },
     recovery: {
       label: "Connection Recovery",
       title: "A Brief Network Drop Doesn't Have to End Your Game",
       intro:
-        "On supported TCP game connections, Beptard can keep the logical session alive through a short transport interruption. The game-server connection stays open while the client establishes a new transport channel, then communication resumes where it left off.",
+        "On supported TCP game connections, connection recovery can keep the logical session alive through a short transport interruption. The game-server connection stays open while the client establishes a new transport channel, then communication resumes where it left off.",
       diagram: {
         title: "Connection recovery comparison",
-        withoutTitle: "Without Beptard / VPN / other service",
-        withTitle: "With Beptard",
+        withoutTitle: "Standard Connection",
+        withTitle: "Optimized Connection",
         withoutBadge: "Connection lost",
         withBadge: "TCP Resume · supported connections",
         client: "Game client",
@@ -52,9 +53,9 @@ const en = {
         serverSub: "Game session",
         serverStateWithout: "Old session ended",
         serverStateWith: "Same session",
-        local: "Beptard client",
+        local: "Local client",
         localSub: "Local agent",
-        relay: "Beptard relay",
+        relay: "Resume relay",
         relaySub: "Resume endpoint",
         direct: "Direct game connection",
         drop: "Network drop",
@@ -79,9 +80,9 @@ const en = {
         },
       },
       steps: [
-        "The game client connects to the game server through Beptard.",
+        "The game client connects to the game server through the optimization layer.",
         "A brief network interruption breaks the transport channel.",
-        "Beptard detects the interrupted transport.",
+        "The client detects the interrupted transport.",
         "The original game-server connection stays open within the recovery window.",
         "The client establishes a new transport channel.",
         "The logical connection resumes and game traffic continues.",
@@ -93,11 +94,11 @@ const en = {
       label: "Lower Latency",
       title: "Faster Responses Through Protocol-Aware Optimization",
       intro:
-        "Beptard does not just send game traffic over a different route. For supported games, it can understand the request, reuse connections, apply protocol-aware handling, or compress the response where supported — cutting unnecessary waiting and bytes.",
+        "Connection optimization goes beyond routing game traffic. For supported games, the optimization layer can understand the request, reuse connections, apply protocol-aware handling, or compress the response where supported — cutting unnecessary waiting and bytes.",
       diagram: {
         title: "Protocol-aware request comparison",
-        withoutTitle: "Without Beptard / VPN / other service",
-        withTitle: "With Beptard",
+        withoutTitle: "Standard Connection",
+        withTitle: "Optimized Connection",
         badge: "Illustrative example",
         client: "Game client",
         clientSub: "Player",
@@ -109,7 +110,7 @@ const en = {
         exampleTime: "Example time",
         withoutTime: "899 ms",
         normalRequest: "Normal request",
-        beptard: "Beptard",
+        optimizationLayer: "Optimization Layer",
         mechanisms: ["Reuse connections", "Protocol-aware handling", "Compress responses"],
         optimizedResponse: "Optimized response",
         optimizedSize: "128 KB",
@@ -117,7 +118,7 @@ const en = {
         separateRequest: "separate example request",
         generalTime: "140 ms",
         withTime: "80 ms",
-        timeWithout: "Without Beptard / VPN",
+        timeWithout: "Standard connection",
         timeGeneral: "General optimization",
         timeProtocol: "Protocol optimization",
       },
@@ -128,7 +129,7 @@ const en = {
     more: {
       label: "More Than Acceleration",
       title: "More Than Just Acceleration",
-      intro: "Beptard is built around Japanese games, with a few practical details beyond raw speed.",
+      intro: "The optimization approach focuses on Japanese games, with a few practical details beyond raw speed.",
       items: [
         {
           label: "Windows and Android",
@@ -149,7 +150,7 @@ const en = {
       ],
       next: {
         label: "What's next",
-        title: "What's next for Beptard",
+        title: "What's next for connection optimization",
         intro: "Planned directions — not features available today.",
         items: [
           {
@@ -173,12 +174,7 @@ const en = {
     },
   },
   cta: {
-    label: "Get Beptard",
-    title: "Use Beptard",
-    price: "$2.99",
-    priceNote: "Simple pricing",
-    disabledButton: "Subscribe",
-    disabledNote: "Checkout is not available in this preview.",
+    title: "Join Us on Discord",
     discord: "Join Discord",
     discordNote: "Discord invite coming soon.",
     discordClicked: "Thanks — the Discord invite will be available soon.",
@@ -190,7 +186,8 @@ export type PageCopy = typeof en;
 
 const zh: PageCopy = {
   nav: {
-    tagline: "产品概览",
+    title: "Game Connection Preview",
+    tagline: "技术概览",
     aria: "页面章节",
     languageAria: "页面语言",
     sections: [
@@ -201,29 +198,29 @@ const zh: PageCopy = {
     ],
   },
   hero: {
-    eyebrow: "产品概览",
-    title: "为什么选择 Beptard？",
-    lead: "从简单的上手方式，到短暂断线后的连接恢复，再到减少不必要等待的协议优化——Beptard 把网络细节处理好，让玩家专注于游戏本身。",
+    eyebrow: "技术概览",
+    title: "为什么需要游戏连接优化？",
+    lead: "从简单的上手方式，到短暂断线后的连接恢复，再到减少不必要等待的协议优化——连接优化把网络细节处理好，让玩家专注于游戏本身。",
   },
   diagramHint: "左右滑动查看完整示意图。",
   sections: {
     easy: {
       label: "简单易用",
       title: "为玩家而做，而不是为网络工程师",
-      intro: "Beptard 替你处理网络细节：不用配置代理、域名列表、分流规则或节点。",
-      steps: ["安装 Beptard", "选择游戏", "开始加速"],
+      intro: "客户端替你处理网络细节：不用配置代理、域名列表、分流规则或节点。",
+      steps: ["安装客户端", "选择游戏", "开始加速"],
       summary:
-        "每款游戏都有独立开关，只加速你开启的游戏。Beptard 会按游戏规则自动处理匹配的连接；部分游戏还支持本地资源缓存，已经下载过的资源不需要再次获取。",
+        "每款游戏都有独立开关，只加速你开启的游戏。客户端会按游戏规则自动处理匹配的连接；部分游戏还支持本地资源缓存，已经下载过的资源不需要再次获取。",
     },
     recovery: {
       label: "连接恢复",
       title: "短暂网络中断，不必让游戏就此结束",
       intro:
-        "对于受支持的 TCP 游戏连接，Beptard 能在短暂传输中断期间保留逻辑会话。游戏服务器连接继续保留，客户端重新建立传输通道，随后双方从原来的进度继续通信。",
+        "对于受支持的 TCP 游戏连接，连接恢复机制能在短暂传输中断期间保留逻辑会话。游戏服务器连接继续保留，客户端重新建立传输通道，随后双方从原来的进度继续通信。",
       diagram: {
         title: "连接恢复对比",
-        withoutTitle: "未使用 Beptard / VPN / 其他服务",
-        withTitle: "使用 Beptard",
+        withoutTitle: "普通连接",
+        withTitle: "优化连接",
         withoutBadge: "连接中断",
         withBadge: "TCP 恢复 · 受支持的连接",
         client: "游戏客户端",
@@ -234,9 +231,9 @@ const zh: PageCopy = {
         serverSub: "游戏会话",
         serverStateWithout: "原会话已结束",
         serverStateWith: "同一会话",
-        local: "Beptard 客户端",
+        local: "本地客户端",
         localSub: "本地代理",
-        relay: "Beptard 中继",
+        relay: "恢复中继",
         relaySub: "恢复端点",
         direct: "游戏直连",
         drop: "网络中断",
@@ -261,9 +258,9 @@ const zh: PageCopy = {
         },
       },
       steps: [
-        "游戏客户端通过 Beptard 与游戏服务器建立连接。",
+        "游戏客户端通过优化层与游戏服务器建立连接。",
         "短暂网络中断切断了传输通道。",
-        "Beptard 检测到传输中断。",
+        "客户端检测到传输中断。",
         "在恢复窗口内，原来的游戏服务器连接继续保留。",
         "客户端重新建立传输通道。",
         "恢复原来的逻辑连接，游戏通信继续。",
@@ -275,11 +272,11 @@ const zh: PageCopy = {
       label: "更低延迟",
       title: "协议感知优化，让响应更快",
       intro:
-        "Beptard 不只是把游戏流量换一条线路。对部分受支持的游戏，它能理解请求内容，复用连接、进行协议感知处理，或在返回客户端前压缩响应，从而减少不必要的等待和数据量。",
+        "连接优化不只是把游戏流量换一条线路。对部分受支持的游戏，优化层能理解请求内容，复用连接、进行协议感知处理，或在返回客户端前压缩响应，从而减少不必要的等待和数据量。",
       diagram: {
         title: "协议感知请求对比",
-        withoutTitle: "未使用 Beptard / VPN / 其他服务",
-        withTitle: "使用 Beptard",
+        withoutTitle: "普通连接",
+        withTitle: "优化连接",
         badge: "示意数据",
         client: "游戏客户端",
         clientSub: "玩家",
@@ -291,7 +288,7 @@ const zh: PageCopy = {
         exampleTime: "示例耗时",
         withoutTime: "899 ms",
         normalRequest: "普通请求",
-        beptard: "Beptard",
+        optimizationLayer: "优化层",
         mechanisms: ["复用连接", "协议感知处理", "压缩响应"],
         optimizedResponse: "优化后响应",
         optimizedSize: "128 KB",
@@ -299,7 +296,7 @@ const zh: PageCopy = {
         separateRequest: "另一请求的独立示例",
         generalTime: "140 ms",
         withTime: "80 ms",
-        timeWithout: "未使用 Beptard / VPN",
+        timeWithout: "普通连接",
         timeGeneral: "普通优化",
         timeProtocol: "协议优化",
       },
@@ -310,7 +307,7 @@ const zh: PageCopy = {
     more: {
       label: "不止加速",
       title: "不止是加速",
-      intro: "Beptard 面向日本游戏，在延迟之外还有一些实际会用到的细节。",
+      intro: "这套优化方案面向日本游戏，在延迟之外还有一些实际会用到的细节。",
       items: [
         {
           label: "Windows 与 Android",
@@ -331,7 +328,7 @@ const zh: PageCopy = {
       ],
       next: {
         label: "后续计划",
-        title: "Beptard 接下来会做什么",
+        title: "连接优化的后续方向",
         intro: "以下是计划中的方向，不代表当前已经可用。",
         items: [
           {
@@ -355,12 +352,7 @@ const zh: PageCopy = {
     },
   },
   cta: {
-    label: "获取 Beptard",
-    title: "使用 Beptard",
-    price: "$2.99",
-    priceNote: "简单定价",
-    disabledButton: "订阅",
-    disabledNote: "预览阶段暂未开放购买。",
+    title: "加入我们的 Discord 社区",
     discord: "加入 Discord",
     discordNote: "Discord 邀请链接即将开放。",
     discordClicked: "感谢关注，Discord 邀请链接即将开放。",

@@ -47,7 +47,7 @@ function MarkerDefs({ prefix }: { prefix: string }) {
   );
 }
 
-/** 图中一个参与方节点（游戏客户端、Beptard、服务器等）。 */
+/** 图中一个参与方节点（游戏客户端、优化层、服务器等）。 */
 function Node({
   x,
   y,
@@ -149,7 +149,7 @@ export function RecoveryDiagram({ labels }: { labels: RecoveryLabels }) {
       <title id="recovery-diagram-title">{labels.title}</title>
       <MarkerDefs prefix="recovery" />
 
-      {/* 上半部分：没有 Beptard */}
+      {/* 上半部分：普通连接 */}
       <rect x="1" y="1" width="878" height="278" rx="5" fill={COLOR.panel} stroke={COLOR.line} />
       <text x="24" y="40" fill={COLOR.ink} fontSize="16" fontWeight="600">
         {labels.withoutTitle}
@@ -203,7 +203,7 @@ export function RecoveryDiagram({ labels }: { labels: RecoveryLabels }) {
         {labels.reconnectNote}
       </text>
 
-      {/* 下半部分：使用 Beptard */}
+      {/* 下半部分：优化连接 */}
       <rect x="1" y="296" width="878" height="396" rx="5" fill={COLOR.panel} stroke={COLOR.line} />
       <text x="24" y="335" fill={COLOR.ink} fontSize="16" fontWeight="600">
         {labels.withTitle}
@@ -253,7 +253,7 @@ export function RecoveryDiagram({ labels }: { labels: RecoveryLabels }) {
         statusColor={COLOR.ok}
       />
 
-      {/* 建立连接：客户端 → Beptard 客户端 → 传输通道 → Beptard 中继 → 服务器 */}
+      {/* 建立连接：客户端 → 本地客户端 → 传输通道 → 恢复中继 → 服务器 */}
       <line
         x1="142"
         y1="429"
@@ -341,7 +341,7 @@ export function LatencyDiagram({ labels }: { labels: LatencyLabels }) {
       <title id="latency-diagram-title">{labels.title}</title>
       <MarkerDefs prefix="latency" />
 
-      {/* 上半部分：没有 Beptard */}
+      {/* 上半部分：普通连接 */}
       <rect x="1" y="1" width="878" height="282" rx="5" fill={COLOR.panel} stroke={COLOR.line} />
       <text x="24" y="40" fill={COLOR.ink} fontSize="16" fontWeight="600">
         {labels.withoutTitle}
@@ -401,7 +401,7 @@ export function LatencyDiagram({ labels }: { labels: LatencyLabels }) {
         {labels.withoutTime}
       </text>
 
-      {/* 下半部分：使用 Beptard */}
+      {/* 下半部分：优化连接 */}
       <rect x="1" y="300" width="878" height="340" rx="5" fill={COLOR.panel} stroke={COLOR.line} />
       <text x="24" y="338" fill={COLOR.ink} fontSize="16" fontWeight="600">
         {labels.withTitle}
@@ -423,7 +423,7 @@ export function LatencyDiagram({ labels }: { labels: LatencyLabels }) {
           strokeWidth="1.4"
         />
         <text x="442" y="378" textAnchor="middle" fill={COLOR.ink} fontSize="13.5" fontWeight="600">
-          {labels.beptard}
+          {labels.optimizationLayer}
         </text>
         {labels.mechanisms.map((mechanism, index) => (
           <text
@@ -465,7 +465,7 @@ export function LatencyDiagram({ labels }: { labels: LatencyLabels }) {
         {labels.normalRequest}
       </text>
 
-      {/* 服务器仍返回完整响应，压缩发生在 Beptard 侧 */}
+      {/* 服务器仍返回完整响应，压缩发生在优化层 */}
       <line
         x1="716"
         y1="430"
@@ -475,19 +475,6 @@ export function LatencyDiagram({ labels }: { labels: LatencyLabels }) {
         strokeWidth="3"
         markerEnd="url(#latency-muted)"
       />
-      {[566, 602, 638, 674].map((x) => (
-        <rect
-          key={x}
-          x={x}
-          y="418"
-          width="28"
-          height="24"
-          rx="2"
-          fill={COLOR.panel2}
-          stroke={COLOR.muted}
-          strokeWidth="1"
-        />
-      ))}
       <text x="630" y="410" textAnchor="middle" fill={COLOR.muted} fontSize="10.5">
         {labels.fullResponse} · {labels.originalSize}
       </text>
