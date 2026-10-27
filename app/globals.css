@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/*
+ * Beptard 官网主题。
+ *
+ * # 色板与 Windows 客户端一致
+ *
+ * 取值直接来自 `apps/windows-gui/src/styles.css` 的 `:root`
+ * （`--bg/--chrome/--panel/--input/--line/--text/--muted/--accent`），
+ * 这样官网与客户端看起来是同一个产品，不需要再维护第二套品牌色。
+ *
+ * # 刻意没有的东西
+ *
+ * 没有渐变、没有阴影光晕、没有毛玻璃、没有大圆角卡片堆叠。
+ * 主色（Beptard 蓝）只用于链接、主按钮、当前导航项和少量强调 ——
+ * 不让整页泛蓝光。
+ */
+@theme {
+  /* 页面背景（近黑深灰） */
+  --color-page: #1f1f1f;
+  /* 顶栏 / 页脚等"外壳"层 */
+  --color-chrome: #232323;
+  /* 内容面板 */
+  --color-panel: #252525;
+  /* 面板内的次级块（代码块、说明块、表头） */
+  --color-panel-2: #292929;
+  /* 边框（低对比灰） */
+  --color-line: #3b3b3b;
+  --color-line-soft: #303030;
+  /* 文字 */
+  --color-ink: #f2f2f2;
+  --color-muted: #a7a7a7;
+  /* 强调色：链接 / 主按钮 / 当前导航 */
+  --color-accent: #2aa9e9;
+  /* 主按钮上的文字色（保证深底蓝按钮上的对比度） */
+  --color-accent-ink: #07131a;
+  /* 状态色（与客户端一致） */
+  --color-ok: #24b36b;
+  --color-warn: #e0a33a;
+
+  --font-sans: "Segoe UI", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+/*
+ * ⚠️ 所有基础样式必须写在 `@layer base` 里。
+ *
+ * Tailwind v4 的工具类位于 `@layer utilities`。**无层级**（unlayered）的
+ * 规则在层叠中优先级高于**任何**层级，所以写在 layer 外面的 `a { color: ... }`
+ * 会压过 `text-accent-ink` —— 结果就是蓝底主按钮上的文字变成同色，
+ * 看起来像"按钮没有文字"。放进 layer 之后，工具类该赢的地方就赢。
+ */
+@layer base {
+  /* 深色配色是**唯一**配色：不做主题切换，也不跟随系统亮色。 */
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    background: var(--color-page);
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 键盘可达性：所有可聚焦元素共用一条可见的焦点环。 */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  /* 正文里的链接统一是强调色 + 悬停下划线（不靠动画）。 */
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* 标题不需要过大的字号：官网是工具站，不是宣传海报。 */
+  h1,
+  h2,
+  h3 {
+    line-height: 1.35;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* 表格在窄屏上横向滚动而不是被压坏（需求 §二十）。 */
+  .table-scroll {
+    overflow-x: auto;
+  }
+}
