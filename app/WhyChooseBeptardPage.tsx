@@ -1,48 +1,9 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { buttonSecondary } from "@/components/ui";
-import { copy, type Lang } from "./content";
+import { copy as t } from "./content";
 import { LatencyDiagram, RecoveryDiagram } from "./Diagrams";
-
-/** 页面左侧导航里的语言开关：只改本页状态，不写 cookie / localStorage。 */
-function LanguageToggle({
-  lang,
-  onChange,
-  label,
-}: {
-  lang: Lang;
-  onChange: (lang: Lang) => void;
-  label: string;
-}) {
-  const buttonClass = "px-2.5 py-1 text-[11px] font-medium leading-5 transition-colors";
-  return (
-    <div
-      role="group"
-      aria-label={label}
-      className="inline-flex shrink-0 overflow-hidden rounded-[4px] border border-line"
-    >
-      <button
-        type="button"
-        onClick={() => onChange("en")}
-        aria-pressed={lang === "en"}
-        className={`${buttonClass} ${lang === "en" ? "bg-panel-2 text-ink" : "text-muted hover:text-ink"}`}
-      >
-        EN
-      </button>
-      <button
-        type="button"
-        onClick={() => onChange("zh")}
-        aria-pressed={lang === "zh"}
-        className={`${buttonClass} border-l border-line ${
-          lang === "zh" ? "bg-panel-2 text-ink" : "text-muted hover:text-ink"
-        }`}
-      >
-        中文
-      </button>
-    </div>
-  );
-}
 
 /** 图片与对比面板之间的向下小箭头。 */
 function DownArrow() {
@@ -120,25 +81,8 @@ function DiagramLegend({
   );
 }
 
-/**
- * 预览页的客户端外壳。
- *
- * 语言切换只读取本地 `copy` 对象，不引入 i18n 框架；页面默认英文。
- * 根布局仍是 zh-CN，因此切到中文时同步 document.lang，离开页面时还原。
- */
 export function WhyChooseBeptardPage() {
-  const [lang, setLang] = useState<Lang>("en");
   const [discordNoteShown, setDiscordNoteShown] = useState(false);
-  const t = copy[lang];
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const previous = root.lang;
-    root.lang = lang === "en" ? "en" : "zh-CN";
-    return () => {
-      root.lang = previous;
-    };
-  }, [lang]);
 
   return (
     <div id="top" className="lg:flex lg:min-h-screen">
@@ -156,7 +100,6 @@ export function WhyChooseBeptardPage() {
                 {t.nav.tagline}
               </p>
             </div>
-            <LanguageToggle lang={lang} onChange={setLang} label={t.nav.languageAria} />
           </div>
 
           <nav aria-label={t.nav.aria} className="mt-4 lg:mt-8">
